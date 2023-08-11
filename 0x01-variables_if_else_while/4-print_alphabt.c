@@ -1,20 +1,26 @@
 #include <stdio.h>
-  
+#include <stdlib.h>
+#include <time.h>
+
 /**
-* main - prints all lowercasecase except e and q
-*
-* return: returns 0 if successful
-*/
-int main(void) 
-{ 
-        char lowercase;
-        
-        for (lowercase = 'a'; lowercase <= 'z'; lowercase++) {
-            if (lowercase != 'e' && lowercase != 'q'){
-                putchar(lowercase);
-             }
- }
-         putchar('\n');
-        
-        return (0); 
+ * main - Entry point
+ *
+ * Return: Always 0 (Success)
+ */
+
+int main(void)
+{
+	char low, e, q;
+
+	e = 'e';
+	q = 'q';
+
+	for (low = 'a'; low <= 'z'; low++)
+	{
+		if (low != e && low != q)
+			putchar(low);
+	}
+	putchar('\n');
+
+	return (0);
 }
