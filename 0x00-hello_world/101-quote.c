@@ -2,11 +2,16 @@
 
 /**
  * main - Entry point
- * Return: Always 1 (Success)
+ *
+ * Description: Prints a specified message to standard error.
+ *
+ * Return: Always 1.
  */
 int main(void)
 {
-	write(STDOUT_FILENO, "and that piece of art is useful
-			\" - Dora Korpar, 2015-10-19\n", 59);
+	char *message = "and that piece of art is useful\" - Dora Korpar, 2015-10-19\n";
+	ssize_t length = sizeof("and that piece of art is useful\" - Dora Korpar, 2015-10-19\n") - 1;
+
+	write(2, message, length);
 	return (1);
 }
