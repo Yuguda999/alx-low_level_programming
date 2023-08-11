@@ -1,24 +1,27 @@
 #include <stdio.h>
-  
+#include <stdlib.h>
+#include <time.h>
+
 /**
-* main - prints numbers 0-9 separated by comma and space
-*
-* return: returns 0 if successful
-*/
-int main(void) 
-{ 
-        int i;
-        
-        while (i < 10) {
-            putchar('0'+i);
-            i++;
-            if (i == 10){
-                break;
-            }
-            putchar(',');
-            putchar(' ');
-        }
-        putchar('\n');
-        
-        return (0); 
+ * main - Entry point
+ *
+ * Return: Always 0 (Success)
+ */
+
+int main(void)
+{
+	int d;
+
+	for (d = '0'; d <= '9'; d++)
+	{
+		putchar(d);
+		if (d != '9')
+		{
+			putchar(',');
+			putchar(' ');
+		}
+	}
+	putchar('\n');
+
+	return (0);
 }
