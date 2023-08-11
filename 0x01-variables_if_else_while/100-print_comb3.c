@@ -1,27 +1,35 @@
 #include <stdio.h>
-  
+#include <stdlib.h>
+#include <time.h>
+
 /**
-* main - prints smallest combinations of numbers 0-9 separated by comma and space without repetition1
-*
-* return: returns 0 if successful
-*/
-int main(void) 
-{ 
-        int i, j, x;
-        
-        for (i = 0; i < 10; i++) {
-            for (j=i; j < 10; j++) {
-                
-                if (i == 9 && j == 9) {
-                    break;
-                    }
-                putchar('0'+i);
-                putchar('0'+j);
-                putchar(',');
-                putchar(' ');
-             }
-        }
-        putchar('\n');
-        
-        return (0); 
+ * main - Entry point
+ *
+ * Return: Always 0 (Success)
+ */
+
+int main(void)
+{
+	int d, p;
+
+	for (d = '0'; d < '9'; d++)
+	{
+		for (p = d + 1; p <= '9'; p++)
+		{
+			if (p != d)
+			{
+				putchar(d);
+				putchar(p);
+
+				if (d == '8' && p == '9')
+					continue;
+
+				putchar(',');
+				putchar(' ');
+			}
+		}
+	}
+	putchar('\n');
+
+	return (0);
 }
