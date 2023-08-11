@@ -1,21 +1,22 @@
 #include <stdio.h>
-  
+#include <stdlib.h>
+#include <time.h>
+
 /**
-* main - prints all lowercasecase and uppercase alphabets
-*
-* return: returns 0 if successful
-*/
-int main(void) 
-{ 
-        char lowercase, uppercase;
-        
-        for (lowercase = 'a'; lowercase <= 'z'; lowercase++) {
-            putchar(lowercase);
-  }
-        for (uppercase = 'A'; uppercase <= 'Z'; uppercase++)     {
-            putchar(uppercase);
- }
-          putchar('\n');
-         
-        return (0); 
- }
+ * main - Entry point
+ *
+ * Return: Always 0 (Success)
+ */
+
+int main(void)
+{
+	char low;
+
+	for (low = 'a'; low <= 'z'; low++)
+		putchar(low);
+	for (low = 'A'; low <= 'Z'; low++)
+		putchar(low);
+	putchar('\n');
+
+	return (0);
+}
