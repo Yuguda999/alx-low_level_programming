@@ -9,13 +9,12 @@
  */
 int main(void)
 {
-    char *message_part1 = "and that piece of art is useful\" - Dora Korpar, ";
-    char *message_part2 = "2015-10-19\n";
-    
-    ssize_t length_part = sizeof(message_part1 + message_part2) - 1;
+    char *message = "and that piece of art is useful\" - Dora Korpar, 2015-10-19\n";
+    char *combined_message = message;
 
-    write(2, message_part1, length_part / 2);
-    write(2, message_part2, length_part / 2);
+    ssize_t length = sizeof(combined_message) - 1;
+
+    write(2, combined_message, length);
 
     return (1);
 }
