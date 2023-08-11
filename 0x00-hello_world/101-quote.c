@@ -9,8 +9,10 @@
  */
 int main(void)
 {
-    char *message = "and that piece of art is useful\" - Dora Korpar, 2015-10-19\n";
-    ssize_t length = sizeof("and that piece of art is useful\" - Dora Korpar, 2015-10-19\n");
+    char mssg;
+    mssg = "and that piece of art is useful\" - Dora Korpar, 2015-10-19\n";
+    char *message = mssg
+    ssize_t length = sizeof(mssg);
     write(2, message, length - 1);
     return (1);
 }
