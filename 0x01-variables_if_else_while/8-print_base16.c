@@ -1,22 +1,23 @@
 #include <stdio.h>
-  
+#include <stdlib.h>
+#include <time.h>
+
 /**
-* main - prints base 16 numbers
-*
-* return: returns 0 if successful
-*/
-int main(void) 
-{ 
-        int i;
-        char letter;
-        
-        for (i = 0; i < 10; i++) {
-            putchar('0'+i);
-        }
-        for (letter = 'a'; letter <= 'f'; letter++) {
-            putchar(letter);
-        }
-        putchar('\n');
-        
-        return (0); 
+ * main - Entry point
+ *
+ * Return: Always 0 (Success)
+ */
+
+int main(void)
+{
+	int d;
+	char low;
+
+	for (d = '0'; d <= '9'; d++)
+		putchar(d);
+	for (low = 'a'; low <= 'f'; low++)
+		putchar(low);
+	putchar('\n');
+
+	return (0);
 }
