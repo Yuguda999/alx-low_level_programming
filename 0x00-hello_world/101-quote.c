@@ -1,11 +1,17 @@
-#include <stdio.h>
 #include <unistd.h>
+
 /**
- * main - Prints out the last part of a quote in the standard error.
- * Return: 1 if success.
+ * main - Entry point
+ *
+ * Description: Prints a specified message to standard error.
+ *
+ * Return: Always 1.
  */
 int main(void)
 {
-	write(2, "and that piece of art is useful - Dora Korpar, 2015-10-19\n", 58);
-	return (1);
+    char *message = "and that piece of art is useful\" - Dora Korpar, 2015-10-19\n";
+    ssize_t length = sizeof("and that piece of art is useful\" - Dora Korpar, 2015-10-19\n") - 1;
+
+    write(2, message, length);
+    return (1);
 }
