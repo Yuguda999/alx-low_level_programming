@@ -9,11 +9,14 @@
  */
 int main(void)
 {
-char *message = "and that piece of art is useful\" - Dora Korpar, "
-"2015-10-19\n";
-ssize_t length = sizeof("and that piece of art is useful\" - Dora Korpar, "
-"2015-10-19\n");
+char *message_part1 = "and that piece of art is useful\" - Dora Korpar, ";
+char *message_part2 = "2015-10-19\n";
+    
+char *combined_message = message_part1;
+combined_message = strcat(combined_message, message_part2);
 
-write(2, message, length - 1);
+ssize_t length = sizeof(message_part1) + sizeof(message_part2) - 2;
+
+write(2, combined_message, length);
 return (1);
 }
