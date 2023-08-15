@@ -1,7 +1,7 @@
 #include "main.h"
 
 /**
- * abs - fimds the absolute value of a number
+ * _abs - fimds the absolute value of a number
  *
  * @num: number to check
  *
