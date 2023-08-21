@@ -1,26 +1,25 @@
 #include "main.h"
 
 /**
- * puts_half - prints half of a string to stdout
- *
- * @str: the string
+ * puts_half - Prints half of a string, followed by a new line
+ * @str: The string
  */
-
 void puts_half(char *str)
 {
-	/* Figure out the length first */
 	int len = 0;
-	int i;
+	int n;
+	int isEven;
 
 	while (str[len])
 		len++;
 
-	for (i = 0; i <= len; i++)
+	isEven = len % 2 == 0;
+	n = (isEven ? len : len - 1) / 2;
+	n += isEven ? 0 : 1;
+	while (n < len)
 	{
-		if (i >= len / 2)
-		{
-			_putchar(str[i]);
-		}
+		_putchar(str[n]);
+		n++;
 	}
 	_putchar('\n');
 }
