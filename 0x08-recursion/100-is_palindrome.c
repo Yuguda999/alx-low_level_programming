@@ -1,52 +1,56 @@
-#include <stdio.h>
+#include "main.h"
+
+int _strlen(char *s);
+int check_palindrome(char *s, int start, int end);
 
 /**
- * palindrome_recursive - Checks if a string is a palindrome.
- * @s: The string to check.
- * @start: The starting index of the substring to check.
- * @end: The ending index of the substring to check.
+ * is_palindrome - returns 1 if a string is a palindrome and 0 if not.
+ * @s: the string
  *
- * Return: 1 if the substring is a palindrome, 0 otherwise.
- */
-int palindrome_recursive(char *s, int start, int end);
-
-/**
- * is_palindrome - Checks if a string is a palindrome.
- * @s: The string to check.
- *
- * Return: 1 if s is a palindrome, 0 otherwise.
+ * Return: returns 1 if a string is a palindrome and 0 if not.
  */
 int is_palindrome(char *s)
 {
-	int length = 0;
+	int len = _strlen(s);
 
-	/* Calculate the length of the string */
-	while (s[length] != '\0')
-	{
-		length++;
-	}
+	if (len == 0)
+		return (1);
 
-	return (palindrome_recursive(s, 0, length - 1));
+	return (check_palindrome(s, 0, len - 1));
 }
 
 /**
- * palindrome_recursive - Checks if a string is a palindrome.
- * @s: The string to check.
- * @start: The starting index of the substring to check.
- * @end: The ending index of the substring to check.
+ * _strlen - gets the length of a string
+ * @s: the string
  *
- * Return: 1 if the substring is a palindrome, 0 otherwise.
+ * Return: the string length
  */
-int palindrome_recursive(char *s, int start, int end)
+int _strlen(char *s)
 {
-	if (start >= end)
-	{
-		return (1); /* Base case: All characters checked */
-	}
-	if (s[start] != s[end])
-	{
-		return (0); /* Characters don't match, not a palindrome */
-	}
-	return (palindrome_recursive(s, start + 1, end - 1));
+	if (*s == '\0')
+		return (0);
+
+	return (_strlen(++s) + 1);
 }
 
+/**
+ * check_palindrome - checks if a substring is a palindrome
+ * @s: the string
+ * @start: the starting index of substring
+ * @end: the stopping index of substring
+ *
+ * Return: 1 if substring is a palindrome, otherwise 0
+ */
+int check_palindrome(char *s, int start, int end)
+{
+	if (start == end)
+		return (1);
+
+	if (s[start] != s[end])
+		return (0);
+
+	if (start < end + 1)
+		return (check_palindrome(s, start + 1, end - 1));
+
+	return (1);
+}
