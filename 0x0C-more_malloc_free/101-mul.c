@@ -1,98 +1,113 @@
-#include <stdio.h>
-#include <stdlib.h>
-#include <unistd.h>
+#include<string.h>
 #include "main.h"
 
 /**
- * is_digit - Check if a string consists of digits.
- * @str: The string to check.
+ * _isdigit - checks if character is digit
+ * @c: the character to check
  *
- * Return: 1 if all characters are digits, 0 otherwise.
+ * Return: 1 if digit, 0 otherwise
  */
-int is_digit(char *str)
+int _isdigit(int c)
 {
-	while (*str)
-	{
-		if (*str < '0' || *str > '9')
-			return (0);
-		str++;
-	}
-	return (1);
+	return (c >= '0' && c <= '9');
 }
 
 /**
- * multiply - Multiply two positive numbers.
- * @num1: The first number as a string.
- * @num2: The second number as a string.
+ * _strlen - returns the length of a string
+ * @s: the string whose length to check
+ *
+ * Return: integer length of string
  */
-void multiply(char *num1, char *num2)
+int _strlen(char *s)
 {
-	int len1 = 0, len2 = 0, i, j;
-	int *result;
-	int carry = 0;
+	int i = 0;
 
-	while (num1[len1])
-		len1++;
-	while (num2[len2])
-		len2++;
-
-	result = calloc(len1 + len2, sizeof(int));
-
-	if (result == NULL)
-	{
-		_putchar('E');
-		_putchar('r');
-		_putchar('r');
-		_putchar('o');
-		_putchar('r');
-		_putchar('\n');
-		exit(98);
-	}
-
-	for (i = len1 - 1; i >= 0; i--)
-	{
-		carry = 0;
-		for (j = len2 - 1; j >= 0; j--)
-		{
-			int product = (num1[i] - '0') * (num2[j] - '0') + result[i + j + 1] + carry;
-			result[i + j + 1] = product % 10;
-			carry = product / 10;
-		}
-		result[i + j + 1] = carry;
-	}
-
-	for (i = 0; i < len1 + len2; i++)
-	{
-		if (result[i] != 0)
-			break;
-	}
-
-	if (i == len1 + len2)
-		_putchar('0');
-	else
-	{
-		for (; i < len1 + len2; i++)
-			_putchar(result[i] + '0');
-	}
-
-	_putchar('\n');
-	free(result);
+	while (*s++)
+		i++;
+	return (i);
 }
 
-int main(int argc, char *argv[])
+/**
+ * big_multiply - multiply two big number strings
+ * @s1: the first big number string
+ * @s2: the second big number string
+ *
+ * Return: the product big number string
+ */
+char *big_multiply(char *s1, char *s2)
 {
-	if (argc != 3 || !is_digit(argv[1]) || !is_digit(argv[2]))
+	char *r;
+	int l1, l2, a, b, c, x;
+
+	l1 = _strlen(s1);
+	l2 = _strlen(s2);
+	r = malloc(a = x = l1 + l2);
+	if (!r)
+		printf("Error\n"), exit(98);
+	while (a--)
+		r[a] = 0;
+
+	for (l1--; l1 >= 0; l1--)
 	{
-		_putchar('E');
-		_putchar('r');
-		_putchar('r');
-		_putchar('o');
-		_putchar('r');
-		_putchar('\n');
-		return 98;
+		if (!_isdigit(s1[l1]))
+		{
+			free(r);
+			printf("Error\n"), exit(98);
+		}
+		a = s1[l1] - '0';
+		c = 0;
+
+		for (l2 = _strlen(s2) - 1; l2 >= 0; l2--)
+		{
+			if (!_isdigit(s2[l2]))
+			{
+				free(r);
+				printf("Error\n"), exit(98);
+			}
+			b = s2[l2] - '0';
+
+			c += r[l1 + l2 + 1] + (a * b);
+			r[l1 + l2 + 1] = c % 10;
+
+			c /= 10;
+		}
+		if (c)
+			r[l1 + l2 + 1] += c;
 	}
+	return (r);
+}
 
-	multiply(argv[1], argv[2]);
 
+/**
+ * main - multiply two big number strings
+ * @argc: the number of arguments
+ * @argv: the argument vector
+ *
+ * Return: Always 0 on success.
+ */
+int main(int argc, char **argv)
+{
+	char *r;
+	int a, c, x;
+
+	if (argc != 3)
+		printf("Error\n"), exit(98);
+
+	x = _strlen(argv[1]) + _strlen(argv[2]);
+	r = big_multiply(argv[1], argv[2]);
+	c = 0;
+	a = 0;
+	while (c < x)
+	{
+		if (r[c])
+			a = 1;
+		if (a)
+			_putchar(r[c] + '0');
+		c++;
+	}
+	if (!a)
+		_putchar('0');
+	_putchar('\n');
+	free(r);
 	return (0);
 }
