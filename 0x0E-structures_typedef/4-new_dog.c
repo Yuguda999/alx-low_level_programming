@@ -1,41 +1,49 @@
 #include "dog.h"
 #include <stdlib.h>
-#include <string.h>
-#include <stddef.h>
 
 /**
- * new_dog - Create a new dog and store a copy of name and owner.
- * @name: Pointer to a char array containing the dog's name.
- * @age: The age of the dog.
- * @owner: Pointer to a char array containing the owner's name.
- *
- * Return: Pointer to the newly created dog (dog_t).
- *         NULL if memory allocation fails or any input is NULL.
+ * new_dog - create a new dog
+ * @name: char string name
+ * @age: int age
+ * @owner: char string owner
+ * Return: pointer to new dog
  */
 dog_t *new_dog(char *name, float age, char *owner)
 {
-	dog_t *new_dog_ptr = malloc(sizeof(dog_t));
+	struct dog *doge;
+	int i, j, k;
+	char *n, *o;
 
-	if (name == NULL || owner == NULL)
+	doge = malloc(sizeof(struct dog));
+	if (doge == NULL)
 		return (NULL);
 
-	if (new_dog_ptr == NULL)
-		return (NULL); /* Memory allocation failed, return NULL. */
+	for (i = 0; name[i] != '\0'; i++)
+		;
+	for (j = 0; owner[j] != '\0'; j++)
+		;
 
-	/* Allocate memory and copy the name and owner strings. */
-	new_dog_ptr->name = strdup(name);
-	new_dog_ptr->owner = strdup(owner);
-
-	if (new_dog_ptr->name == NULL || new_dog_ptr->owner == NULL)
+	n = malloc(sizeof(char) * i + 1);
+	if (n == NULL)
 	{
-/* Memory allocation for name or owner failed, free memory and return NULL. */
-		free(new_dog_ptr->name);
-		free(new_dog_ptr->owner);
-		free(new_dog_ptr);
+		free(doge);
 		return (NULL);
 	}
+	o = malloc(sizeof(char) * j + 1);
+	if (o == NULL)
+	{
+		free(n);
+		free(doge);
+		return (NULL);
+	}
+	for (k = 0; k <= i; k++)
+		n[k] = name[k];
+	for (k = 0; k <= j; k++)
+		o[k] = owner[k];
 
-	new_dog_ptr->age = age;
+	doge->name = n;
+	doge->age = age;
+	doge->owner = o;
 
-	return (new_dog_ptr); /* Return the newly created dog. */
+	return (doge);
 }
