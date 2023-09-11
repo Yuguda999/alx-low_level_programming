@@ -1,4 +1,4 @@
-# C Programming Examples
+# C Programming Structures
 
 A collection of C programming examples and solutions to common questions.
 
@@ -16,7 +16,7 @@ A collection of C programming examples and solutions to common questions.
 
 ## Introduction
 
-This repository contains C programming examples and solutions to various questions related to C programming concepts. Each code example is well-documented and follows coding style guidelines.
+This repository contains C programming structures and typedef examples and solutions to various questions related to C programming concepts. Each code example is well-documented and follows coding style guidelines.
 
 ## Code Examples
 
