@@ -1,4 +1,4 @@
-# FUNCTION POINTETS BASICS
+# FUNCTION POINTERS BASICS
 
 
 ## Program: Calculator (calc.c)
