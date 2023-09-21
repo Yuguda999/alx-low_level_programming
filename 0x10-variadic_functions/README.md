@@ -1,5 +1,4 @@
-```markdown
-# C Functions for Printing and Summing
+# Variadic Functions
 
 This repository contains C functions for printing and summing various types of values, developed as part of a conversation with the ChatGPT language model.
 
@@ -39,5 +38,4 @@ This function prints values of different types based on the provided format stri
 Example usage:
 ```c
 print_all("cifs", 'H', 42, 3.14, "ChatGPT"); // Prints "H, 42, 3.140000, ChatGPT\n"
-```
 ```
